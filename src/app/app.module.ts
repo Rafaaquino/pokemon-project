@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ElementsModule } from './elements/elements-module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiKeyInterceptor } from './core/interceptors/token.interceptor';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ElementsModule } from './elements/elements-module';
     AppRoutingModule,
     ElementsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
