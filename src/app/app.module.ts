@@ -8,6 +8,7 @@ import { ElementsModule } from './elements/elements-module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './core/interceptors/token.interceptor';
 import { CadsService } from './core/services/cads.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CadsService } from './core/services/cads.service';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    ElementsModule
+    ElementsModule,
+    SharedModule
   ],
   providers: [
     CadsService,
