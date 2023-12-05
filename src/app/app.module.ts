@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElementsModule } from './elements/elements-module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './core/interceptors/token.interceptor';
+import { CadsService } from './core/services/cads.service';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ApiKeyInterceptor } from './core/interceptors/token.interceptor';
     ElementsModule
   ],
   providers: [
+    CadsService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

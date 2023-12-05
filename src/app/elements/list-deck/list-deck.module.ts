@@ -14,7 +14,6 @@ import { ListDeckComponent } from './components/list-deck.component';
     BrowserAnimationsModule,
   ],
   providers: [
-
   ]
 })
 export class ListDeckModule { }

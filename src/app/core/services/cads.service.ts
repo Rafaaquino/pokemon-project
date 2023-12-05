@@ -15,7 +15,7 @@ export class CadsService {
     this.cads$.next(cards);
   }
 
-  getCads(): Observable<any> {
+  getCards(): Observable<any> {
     return this.cads$.asObservable();
   }
 
