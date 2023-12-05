@@ -1,22 +1,19 @@
-import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
+import { CreateDeckComponent } from "./elements/create-deck/components/create-deck.component";
+import { AppComponent } from "./app.component";
+import { ListDeckComponent } from "./elements/list-deck/components/list-deck.component";
+import { DetailsDeckComponent } from "./elements/details-deck/components/details-deck.component";
 
 const routes: Routes = [
-
+  { path: '',component: AppComponent },
+  { path: 'criar', component: CreateDeckComponent},
+  { path: 'lista', component: ListDeckComponent},
+  { path: 'detalhes', component: DetailsDeckComponent}
 ]
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
