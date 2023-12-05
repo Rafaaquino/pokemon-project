@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
 import { CadsService } from 'src/app/core/services/cads.service';
+import { ICard } from 'src/app/shared/interfaces/card';
 
 @Component({
   selector: 'app-list-deck',
@@ -9,12 +13,14 @@ import { CadsService } from 'src/app/core/services/cads.service';
 
 export class ListDeckComponent implements OnInit {
 
-  cards: any[] = [];
+  cards: ICard[] = [];
   c: any;
-  myDeck: any[] = [];
+  myDeck: ICard[] = [];
+
 
   constructor(
-    private cardsService: CadsService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -22,16 +28,51 @@ export class ListDeckComponent implements OnInit {
   }
 
   getAllCards() {
-   this.c =  localStorage.getItem('cards');
-   this.cards = JSON.parse(this.c);
+   this.cards = JSON.parse( localStorage.getItem('cards') || '{}')
   }
 
-  addCard(cardId: string)  {
-    console.log('--', cardId);
-    if (!this.myDeck.find(item => item.id === cardId)) {
-      this.myDeck.push(cardId);
-      console.log("my deck",this.myDeck)
+  addCard(cardId: ICard)  {
+    if (!this.myDeck.find(item => item.id === cardId.id)) {
+      if(this.myDeck.length >= 60) {
+        this.errorAdd();
+      }
+      else {
+        this.myDeck.push(cardId);
+      }
+    }
+    else {
+      this.duplicateAdd();
     }
   }
 
+  addDeck() {
+    if(this.myDeck.length <= 20){
+      this.warnAdd();
+    }
+    else {
+      localStorage.setItem('myDecks', JSON.stringify(this.myDeck));
+      this.succesAdd();
+      setTimeout(() => {
+        this.router.navigateByUrl('/')
+      }, 1500)
+
+    }
+
+  }
+
+  duplicateAdd() {
+    this.messageService.add({severity:'info', summary:'Ops!', detail:'Você ja adicionou esse card! Escolha outro'});
+  }
+
+  succesAdd() {
+    this.messageService.add({severity:'success', summary:'Eba!', detail:'Cartas adicionada com sucesso!'});
+  }
+
+  warnAdd() {
+    this.messageService.add({severity:'warn', summary:'Ops!', detail:'Você precisa adicionar no min 20 cartas'});
+  }
+
+  errorAdd() {
+    this.messageService.add({severity:'error', summary:'Ops!', detail:'Você ja atingiu o limite de 60 cartas'});
+  }
 }
