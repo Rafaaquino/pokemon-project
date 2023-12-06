@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './core/interceptors/token.interceptor';
 import { CadsService } from './core/services/cads.service';
 import { SharedModule } from './shared/shared.module';
+import { LocalStorageService } from './core/services/localstorage.service';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     CadsService,
+    LocalStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateDeckComponent } from './components/create-deck.component';
+import { CreateDeckComponent } from './components/create-deckCardcomponent';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { CreateDeckComponent } from './components/create-deck.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
 
