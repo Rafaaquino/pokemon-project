@@ -28,7 +28,6 @@ export class CreateDeckComponent implements OnInit {
     };
 
     this.deckCards.push(newDeckCard);
-    console.log( this.deckCards)
     localStorage.setItem('deckCards', JSON.stringify(this.deckCards));
     this.nameDeckCard = '';
   }

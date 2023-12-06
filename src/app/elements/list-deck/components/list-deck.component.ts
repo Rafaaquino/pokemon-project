@@ -26,7 +26,6 @@ export class ListDeckComponent implements OnInit {
   ngOnInit() {
     this.getAllCards();
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id)
     this.getDeckCards()
   }
 
@@ -37,7 +36,6 @@ export class ListDeckComponent implements OnInit {
 
   getDeckCards() {
     this.deckCards = JSON.parse(localStorage.getItem('deckCards') || '');
-    console.log(this.deckCards);
   }
 
   addCard(cardId: ICard)  {
@@ -49,8 +47,6 @@ export class ListDeckComponent implements OnInit {
       }
       else {
         idDeckCard.cards.push(cardId);
-        //this.myCards.push(cardId);
-        console.log(idDeckCard)
       }
     }
     else {

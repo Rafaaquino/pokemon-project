@@ -20,15 +20,12 @@ export class DetailsDeckComponent implements OnInit {
 
   ngOnInit(): void {
     this.paramsId = this.route.snapshot.paramMap.get('id');
-    console.log(this.paramsId)
     this.getDeckCards(this.paramsId)
   }
 
   getDeckCards(id: any) {
     this.deckCards = JSON.parse(localStorage.getItem('deckCards') || '');
     this.actualCards = [this.deckCards.find(item => item.id == id)]
-    console.log(this.deckCards);
-    console.log(this.actualCards);
   }
 
   removeCards(id: any) {
@@ -40,7 +37,6 @@ export class DetailsDeckComponent implements OnInit {
         const cardIndex = deck.cards.findIndex(card => card.id === id);
         if (cardIndex !== -1) {
           deck.cards.splice(cardIndex, 1);
-          console.log("++", deck)
           break;
         }
       }
