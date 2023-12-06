@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { CadsService } from 'src/app/core/services/cads.service';
 import { ICard } from 'src/app/shared/interfaces/card';
 
 @Component({
@@ -12,32 +11,43 @@ import { ICard } from 'src/app/shared/interfaces/card';
 })
 
 export class ListDeckComponent implements OnInit {
-
+  deckCards: any[] = [];
   cards: ICard[] = [];
-  c: any;
-  myDeck: ICard[] = [];
+  myCards: ICard[] = [];
+  id: any;
 
 
   constructor(
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.getAllCards();
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id)
+    this.getDeckCards()
   }
 
+
   getAllCards() {
-   this.cards = JSON.parse( localStorage.getItem('cards') || '{}')
+   this.cards = JSON.parse( localStorage.getItem('cards') || '');
+  }
+
+  getDeckCards() {
+    this.deckCards = JSON.parse(localStorage.getItem('deckCards') || '');
+    console.log(this.deckCards);
   }
 
   addCard(cardId: ICard)  {
-    if (!this.myDeck.find(item => item.id === cardId.id)) {
-      if(this.myDeck.length >= 60) {
+    if (!this.myCards.find(item => item.id === cardId.id)) {
+      if(this.myCards.length >= 60) {
         this.errorAdd();
       }
       else {
-        this.myDeck.push(cardId);
+        this.myCards.push(cardId);
+        console.log(this.myCards)
       }
     }
     else {
@@ -46,18 +56,23 @@ export class ListDeckComponent implements OnInit {
   }
 
   addDeck() {
-    if(this.myDeck.length <= 20){
+    if(this.myCards.length <= 3){
       this.warnAdd();
     }
     else {
-      localStorage.setItem('myDecks', JSON.stringify(this.myDeck));
+      this.addCardDek(this.deckCards, this.id);
       this.succesAdd();
       setTimeout(() => {
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/baralhos')
       }, 1500)
 
     }
+  }
 
+  addCardDek(deck: any[], id: any): void {
+    const idDeckCard = deck.find(item => item.id == id)
+    idDeckCard.cards.push(this.myCards);
+    localStorage.setItem('deckCards', JSON.stringify(this.deckCards));
   }
 
   duplicateAdd() {

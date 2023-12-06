@@ -13,7 +13,6 @@ export class DetailsDeckComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    debugger;
     this.objetoRecebido = this.route.snapshot.paramMap.get('id');
     console.log(this.objetoRecebido)
   }

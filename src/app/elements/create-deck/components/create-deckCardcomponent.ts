@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DeckCards } from '../model/deck.interface';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/services/localstorage.service';
 
@@ -22,13 +21,13 @@ export class CreateDeckComponent implements OnInit {
   }
 
   addDeckCards() {
-    const novoBaralho = {
+    const newDeckCard = {
       id: Number(this.createId()),
-      nome: this.nameDeckCard || 'Sem Nome',
-      cartas: []
+      name: this.nameDeckCard || 'Sem Nome',
+      cards: []
     };
 
-    this.deckCards.push(novoBaralho);
+    this.deckCards.push(newDeckCard);
     console.log( this.deckCards)
     localStorage.setItem('deckCards', JSON.stringify(this.deckCards));
     this.nameDeckCard = '';

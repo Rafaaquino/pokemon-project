@@ -7,7 +7,7 @@ import { ElementsComponent } from "./elements/home/components/elements.component
 
 const routes: Routes = [
   { path: '',component: ElementsComponent },
-  { path: 'criar', component: CreateDeckComponent},
+  { path: 'baralhos', component: CreateDeckComponent},
   { path: 'lista/:id', component: ListDeckComponent},
   { path: 'detalhes/:id', component: DetailsDeckComponent}
 ]
