@@ -41,13 +41,16 @@ export class ListDeckComponent implements OnInit {
   }
 
   addCard(cardId: ICard)  {
-    if (!this.myCards.find(item => item.id === cardId.id)) {
-      if(this.myCards.length >= 60) {
+    const idDeckCard = this.deckCards.find(item => item.id == this.id)
+
+    if (!idDeckCard.cards.find((item: any) => item.id === cardId.id)) {
+      if(idDeckCard.cards.length >= 60) {
         this.errorAdd();
       }
       else {
-        this.myCards.push(cardId);
-        console.log(this.myCards)
+        idDeckCard.cards.push(cardId);
+        //this.myCards.push(cardId);
+        console.log(idDeckCard)
       }
     }
     else {
@@ -56,7 +59,8 @@ export class ListDeckComponent implements OnInit {
   }
 
   addDeck() {
-    if(this.myCards.length <= 3){
+    const idDeckCard = this.deckCards.find(item => item.id == this.id)
+    if(idDeckCard.cards.length <= 19){
       this.warnAdd();
     }
     else {
