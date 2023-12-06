@@ -6,6 +6,7 @@ import { DetaislDeckModule } from './details-deck/details-deck.module';
 import { ListDeckModule } from './list-deck/list-deck.module';
 import { ElementsComponent } from './home/components/elements.component';
 import { AllCardsService } from './home/service/allCards.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AllCardsService } from './home/service/allCards.service';
     BrowserModule,
     CreateDeckModule,
     DetaislDeckModule,
-    ListDeckModule
+    ListDeckModule,
+    RouterModule
   ],
   providers: [
     AllCardsService

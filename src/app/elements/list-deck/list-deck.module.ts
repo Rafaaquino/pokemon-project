@@ -6,6 +6,8 @@ import { ListDeckComponent } from './components/list-deck.component';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { BadgeModule } from 'primeng/badge';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MessageService } from 'primeng/api';
     HttpClientModule,
     BrowserAnimationsModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    BadgeModule,
+    RouterModule,
 
   ],
   providers: [
