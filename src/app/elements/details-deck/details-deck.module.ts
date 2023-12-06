@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsDeckComponent } from './components/details-deck.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { DetailsDeckComponent } from './components/details-deck.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastModule
   ],
   providers: [
 
