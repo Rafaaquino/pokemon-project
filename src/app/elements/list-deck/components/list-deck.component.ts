@@ -60,7 +60,7 @@ export class ListDeckComponent implements OnInit {
 
   addDeck() {
     const idDeckCard = this.deckCards.find(item => item.id == this.id)
-    if(idDeckCard.cards.length <= 19){
+    if(idDeckCard.cards.length <= 23){
       this.warnAdd();
     }
     else {
@@ -88,7 +88,7 @@ export class ListDeckComponent implements OnInit {
   }
 
   warnAdd() {
-    this.messageService.add({severity:'warn', summary:'Ops!', detail:'Você precisa adicionar no min 20 cartas'});
+    this.messageService.add({severity:'warn', summary:'Ops!', detail:'Você precisa adicionar no min 24 cartas'});
   }
 
   errorAdd() {
