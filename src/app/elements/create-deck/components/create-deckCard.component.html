@@ -20,23 +20,23 @@
   </div>
 
   <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-    <div class="group relative" *ngFor="let baralho of deckCards">
+    <div class="group relative" *ngFor="let deck of deckCards">
       <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
         <img src="../../../../assets/images/deckCards.png" alt="" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
       </div>
       <div  class="mt-4 flex justify-between items-center">
         <h3 class="text-gray-700 text-2xl font-bold">
-            {{ baralho.name }}
+            {{ deck.name }}
         </h3>
       </div>
       <div class="mt-4 flex justify-between items-center">
 
         <button class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-        (click)="navigateDetails(baralho.id)">Ver</button>
+        (click)="navigateDetails(deck.id)">Ver</button>
         <button class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-        (click)="addCards(baralho.id)">Adicionar Cartas</button>
+        (click)="addCards(deck.id)">Adicionar Cartas</button>
         <button class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-        (click)="removeCards(baralho.id)">Remover</button>
+        (click)="removeCards(deck.id)">Remover</button>
       </div>
     </div>
   </div>
