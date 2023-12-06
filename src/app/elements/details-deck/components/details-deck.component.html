@@ -1,5 +1,9 @@
 <div class="bg-white">
-  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <div class="mx-auto max-w-2xl px-4  sm:px-6 sm:py-5 lg:max-w-7xl lg:px-8">
+    <a routerLink="/baralhos" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
+          ><i class="pi pi-angle-double-left pr-2"></i> Voltar</a>
+  </div>
+  <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Minhas Cartas de Pokemon</h2>
     <div
       *ngFor="let deck of actualCards">
@@ -7,7 +11,7 @@
       <p>Cartas: {{ deck.cards.length}}</p>
       <div  class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
         *ngIf="deck.cards && deck.cards.length > 0">
-        <div class="group relative"*ngFor="let card of deck.cards">
+        <div class="group relative shadow-2xl p-3 rounded-md"*ngFor="let card of deck.cards">
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
             <img src="{{card.images?.large}} " alt="" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
           </div>
@@ -32,7 +36,7 @@
             <p class="text-sm font-medium text-gray-900">HP {{card.hp}}</p>
           </div>
           <button class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-          (click)="removeCards(card.id)">Remover</button>
+          (click)="removeCards(card.id)"><i class="pi pi-trash"></i></button>
         </div>
         <div>
         </div>
